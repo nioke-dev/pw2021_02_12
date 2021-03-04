@@ -30,11 +30,15 @@ function tambah($data){
 
   $conn = koneksi();
 
-  $nama = $data['nama'];
-  $nrp = $data['nrp'];
-  $email = $data['email'];
-  $jurusan = $data['jurusan'];
-  $gambar = $data['gambar'];
+
+  // htmlspecialchars() artinya semua data yang dikirim oleh user di cek
+  // ada simbol "<"  kalau ada jangan tampilin itu
+
+  $nama = htmlspecialchars($data['nama']);
+  $nrp = htmlspecialchars($data['nrp']);
+  $email = htmlspecialchars($data['email']);
+  $jurusan = htmlspecialchars($data['jurusan']);
+  $gambar = htmlspecialchars($data['gambar']);
 
   $query = "INSERT INTO
               mahasiswa
