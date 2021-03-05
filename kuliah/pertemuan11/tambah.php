@@ -16,7 +16,7 @@ if (isset( $_POST['tambah'] )) {
     echo "
       <script>
         alert('Data Berhasil Ditambahkan!!');
-        document.location.href = 'latihan3.php';
+        document.location.href = 'index.php';
       </script>
     ";
   } else {
@@ -24,7 +24,7 @@ if (isset( $_POST['tambah'] )) {
     echo "
       <script>
         alert('Data Gagal Ditambahkan!!');
-        document.location.href = 'latihan3.php';
+        document.location.href = 'index.php';
       </script>
     ";
   }
