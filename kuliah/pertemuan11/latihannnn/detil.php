@@ -1,15 +1,10 @@
 <?php 
-// panggil dulu si functionnya ok.....
 require 'function_latihan_read.php';
 
-// ambil id dari url lalu simpan ke variable id ex -->> $_GET['id']
 $id = $_GET['id'];
 
+$detail_mahasiswa = query("SELECT * FROM mahasiswa WHERE id = $id");
 
-// query mahasiswa berdasarkan id
-// jika datanya hanya 1 maka normal jika datanya lebih dari satu maka tambahkan array 0 ex -->> [0] di akhir function query
-$mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0];
-var_dump($mhs);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,25 +12,36 @@ var_dump($mhs);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>latihann detail php</title>
+  <title>Detail Mahasiswa</title>
 </head>
 <body>
-  <h3>DETAIL MAHASISWA</h3>
+  <h2>Detail Mahasiswa</h2>
   <table border="1" cellpadding = "10" cellspacing = "0">
     <tr>
-      <th>gambar</th>
+      <th>No</th>
+      <th>Gambar</th>
+      <th>Nama</th>
       <th>nrp</th>
-      <th>nama</th>
       <th>email</th>
       <th>jurusan</th>
+      <th>Aksi</th>
     </tr>
-    <tr>
-      <td><img src="../img/<?= $mhs['gambar']; ?>" alt=""  style="width: 100px; height: 100px;"></td>
-      <td><?= $mhs['nrp']; ?></td>
-      <td><?= $mhs['nama']; ?></td>
-      <td><?= $mhs['email']; ?></td>
-      <td><?= $mhs['jurusan']; ?></td>
-    </tr>
+    <?php $i = 1;
+    foreach($detail_mahasiswa as $dm) : ?>
+      <tr>
+        <td><?= $i++; ?></td>
+        <td><img src="../img/<?= $dm['gambar']; ?>" alt="" width="100px" height="100px"></td>
+        <td><?= $dm['nama']; ?></td>
+        <td><?= $dm['nrp']; ?></td>
+        <td><?= $dm['email']; ?></td>
+        <td><?= $dm['jurusan']; ?></td>
+        <td>
+          <a href="latihan read.php"><button>Kembali Ke Halaman Utama</button></a><br><br>
+          <a href=""><button>Ubah</button></a><br><br>
+          <a href=""><button>Hapus</button></a>
+        </td>        
+      </tr>
+    <?php endforeach; ?>
   </table>
 </body>
 </html>
