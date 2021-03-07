@@ -1,18 +1,24 @@
 <?php 
-require 'function_latihan_read.php';
+  // pertama kita hubungkan dulu halaman ini dengan function_latihan_read.php
 
-if (isset( $_POST['tambah'] )) {
-  # code...
-  if ( tambah($_POST) > 0 ) {
+  require 'function_latihan_read.php';
+
+
+  if (isset( $_POST['tambah'] )) {
     # code...
-    echo "Data Berhasil Ditambahkan";
-  }else {
-    echo "Data Gagal Ditambahkan";
+    if (tambah($_POST) > 0) {
+      # code...
+      echo "Data Berhasil Ditambahkan";
+    }else{
+      echo "Data Gagal Ditambahkan";
+    }
   }
-}
+
+
 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +26,11 @@ if (isset( $_POST['tambah'] )) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Latihan Insert Data</title>  
+  <title>Tambah Data Mahasiswa</title>
 </head>
 <body>
-    <h2>Tambah Data Mahasiswa</h2>
-    <form action="" method="POST">
+  <h2>Tambah Data Mahasiswa</h2>
+  <form action="" method="POST">
     <ul>
       <li>
         <label>
@@ -52,14 +58,15 @@ if (isset( $_POST['tambah'] )) {
       </li>
       <li>
         <label>
-          Gambar : 
+          Gambar :
           <input type="text" name="gambar">
         </label>
       </li>
       <li>
-        <button type="submit" name="tambah">Kirim!!</button>
+        <button type="submit" name="tambah">Kirim!</button>
       </li>
     </ul>
-    </form>
+  </form>
 </body>
 </html>
+

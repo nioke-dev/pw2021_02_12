@@ -32,7 +32,7 @@
     foreach($mahasiswa as $mhs) : ?>
       <tr>
         <td><?= $i++; ?></td>
-        <td><img src="../img/<?= $mhs['gambar']; ?>" alt="" style="width: 100px; height: 100px;"></td>
+        <td><img src="img/<?= $mhs['gambar']; ?>" alt="" style="width: 100px; height: 100px;"></td>
         <td><?= $mhs['nama']; ?></td>
         <td>
           <a href="detil.php?id=<?= $mhs['id']; ?>">Lihat Lebih Detail</a>
