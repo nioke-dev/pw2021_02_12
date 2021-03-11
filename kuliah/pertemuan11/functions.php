@@ -1,13 +1,15 @@
-<?php 
-function koneksi(){
+<?php
+function koneksi()
+{
   return mysqli_connect('localhost', 'root', '', 'pw_043040023');
 }
-function query($query){
+function query($query)
+{
   $conn = koneksi();
   $result = mysqli_query($conn, $query);
 
   // jika hasilnya hanya satu data 
-  if( mysqli_num_rows($result) == 1){
+  if (mysqli_num_rows($result) == 1) {
     // jadi kalau resultnya cuman 1 langsung ajah
     return mysqli_fetch_assoc($result);
     // intinya gak usah di looping
@@ -15,16 +17,17 @@ function query($query){
 
 
   $rows = [];
-  while($row = mysqli_fetch_assoc($result)){
+  while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row;
   }
 
 
-  return $rows; 
+  return $rows;
 }
 
 
-function tambah($data){
+function tambah($data)
+{
   // var_dump($data);
   // cara menambah data cukup memanggil fungsinya yaitu query
 
@@ -45,7 +48,7 @@ function tambah($data){
             VALUES
             (null, '$nama', '$nrp', '$email', '$jurusan', '$gambar');
             ";
-  mysqli_query($conn, $query) or die (mysqli_error($conn));
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
 
   echo mysqli_error($conn);
 
@@ -61,10 +64,11 @@ function tambah($data){
 
 
 
-function hapus ($id) {
+function hapus($id)
+{
   $conn = koneksi();
 
-  mysqli_query($conn, "DELETE FROM mahasiswa WHERE id = $id") or die (mysqli_error($conn));
+  mysqli_query($conn, "DELETE FROM mahasiswa WHERE id = $id") or die(mysqli_error($conn));
   // jika ada eror kita langsug bisa matikan perogramnya or die(mysqli_eror($conn))
 
   return mysqli_affected_rows($conn);
@@ -73,7 +77,8 @@ function hapus ($id) {
 
 
 // duplicate dari funtion tambah
-function ubah($data){
+function ubah($data)
+{
   // var_dump($data);
   // cara menambah data cukup memanggil fungsinya yaitu query
 
@@ -96,7 +101,7 @@ function ubah($data){
               jurusan = '$jurusan',
               gambar = '$gambar'
             WHERE id = $id";
-  mysqli_query($conn, $query) or die (mysqli_error($conn));
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
 
   echo mysqli_error($conn);
 
@@ -108,26 +113,3 @@ function ubah($data){
   // tapi kalu angkanya minus 1 ada yang eror
 }
 // dia akan ngambil data ynag dikirimin tadi, data dikirimin dalam bentuk post terus kita ambil boleh dalam bentuk apa saja
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>
