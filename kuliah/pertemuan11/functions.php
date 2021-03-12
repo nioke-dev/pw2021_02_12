@@ -113,3 +113,20 @@ function ubah($data)
   // tapi kalu angkanya minus 1 ada yang eror
 }
 // dia akan ngambil data ynag dikirimin tadi, data dikirimin dalam bentuk post terus kita ambil boleh dalam bentuk apa saja
+function cari($keyword)
+{
+  $conn = koneksi();
+
+  $query = "SELECT * FROM mahasiswa
+            WHERE 
+            nama LIKE '%$keyword%' OR
+            nrp LIKE '%$keyword%'
+            ";
+
+  $result = mysqli_query($conn, $query);
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
+}
