@@ -15,7 +15,6 @@ require 'functions.php';
 if (isset($_POST['tambah'])) {
   # code...
   // kita akan ambil semua data yang udah di ketikkan
-  // var_dump($_POST);
 
 
   // kalau udah diklik tombol tambah ambil semua data post tadi terus kirimkan ke sebuah function namanya tambah
@@ -52,7 +51,8 @@ if (isset($_POST['tambah'])) {
 
 <body>
   <h3>Form Tambah Data Mahasiswa</h3>
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
+    <!-- dengan menambahkan enctype nanti kita akan punya akses ke sebuah superglobal baru yang namanya $_FILES -->
     <!-- actionnya di kosongkan karena kalau di kosongkan itu data yang ada didalam form nya ketika di submit akan dikembalikan ke halaman yang sama -->
     <ul>
       <li>
@@ -89,17 +89,16 @@ if (isset($_POST['tambah'])) {
       <li>
         <label>
           Gambar :
-          <input type="text" name="gambar" required>
+          <input type="file" name="gambar" class="gambar" onchange="previewImage()">
         </label>
+        <img src="img/nophoto.png" alt="" style="width: 120px; display: block;" class="img-preview">
       </li>
       <li>
         <button type="submit" name="tambah">Tambah Data!</button>
       </li>
     </ul>
   </form>
-
-
-
+  <script src="js/script.js"></script>
 </body>
 
 </html>
